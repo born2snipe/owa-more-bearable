@@ -40,11 +40,21 @@
 			unhightlightRow(currentRowHighlighted);
 			hightlightRow(--currentRowHighlighted);	
 		}
-	}
+	};
+
+	clickMove = function() {
+		$("#lnkHdrmove").click();
+	};
+
+	clickDelete = function() {
+		$("#lnkHdrdelete").click();
+	};
 
 	bindKeys = function() {
 		$(document).bind('keydown', 'j', moveDownRow);
 		$(document).bind('keydown', 'k', moveUpRow);
+		$(document).bind('keydown', 'm', clickMove);
+		$(document).bind('keydown', 'd', clickDelete);
 	};
 
 	assignIdsToEmails();
