@@ -15,10 +15,13 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
 		          "<hr>"+
 		          "<li><span>m:</span>Move selected email</li>"+
 		          "<li><span>d:</span>Delete selected email</li>"+
-		          "<li><span>r:</span>Check for new emails</li>"+
+		          "<li><span>Alt+r:</span>Check for new emails</li>"+
 		          "<li><span>N:</span>New email</li>"+
 		          "<li><span>o:</span>Open email</li>"+
 		          "<li><span>c:</span>Close email</li>"+
+		          "<li><span>r:</span>Reply to email</li>"+
+		          "<li><span>R:</span>Reply All to email</li>"+
+		          "<li><span>f:</span>Forward email</li>"+
 		     "</ul>"+
      	"</div></div>"
 	});

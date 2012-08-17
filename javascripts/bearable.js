@@ -108,6 +108,18 @@
 		$("<div id='__help_notifiction__'><div class='inner'>Press '?' to see help</div></div>").appendTo($("body"));
      };
 
+     replyToEmail = function() {
+     	$("#lnkHdrreply").click();
+     };
+
+ 	replyAllToEmail = function() {
+     	$("#lnkHdrreplyall").click();
+     };
+
+	forwardEmail = function() {
+     	$("#lnkHdrforward").click();
+     };
+     
 	bindKeys = function() {
 		$(document).bind('keydown', 'shift+h', firstPage);
 		$(document).bind('keydown', 'h', previousPage);
@@ -117,13 +129,15 @@
 		$(document).bind('keydown', 'shift+l', lastPage);
 		$(document).bind('keydown', 'm', clickMove);
 		$(document).bind('keydown', 'd', clickDelete);
-		$(document).bind('keydown', 'r', checkMessages);
+		$(document).bind('keydown', 'alt+r', checkMessages);
 		$(document).bind('keydown', 'shift+/', showHelp);
 		$(document).bind('keydown', 'esc', hideHelp);
 		$(document).bind('keydown', 'shift+n', newEmail);
 		$(document).bind('keydown', 'o', openEmail);
 		$(document).bind('keydown', 'c', closeEmail);
-
+		$(document).bind('keydown', 'r', replyToEmail);
+		$(document).bind('keydown', 'shift+r', replyAllToEmail);
+		$(document).bind('keydown', 'f', forwardEmail);
 	};
 
 	assignIdsToEmails();
