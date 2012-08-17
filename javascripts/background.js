@@ -16,6 +16,7 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
 		          "<li><span>m:</span>Move selected email</li>"+
 		          "<li><span>d:</span>Delete selected email</li>"+
 		          "<li><span>r:</span>Check for new emails</li>"+
+		          "<li><span>N:</span>New email</li>"+
 		     "</ul>"+
      	"</div></div>"
 	});

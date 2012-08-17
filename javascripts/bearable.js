@@ -90,6 +90,10 @@
      	$("#lnkFrstPg").click();
      };
 
+     newEmail = function() {
+     	$("#lnkHdrnewmsg").click();
+     };
+
 	bindKeys = function() {
 		$(document).bind('keydown', 'shift+h', firstPage);
 		$(document).bind('keydown', 'h', previousPage);
@@ -102,6 +106,8 @@
 		$(document).bind('keydown', 'r', checkMessages);
 		$(document).bind('keydown', 'shift+/', showHelp);
 		$(document).bind('keydown', 'esc', hideHelp);
+		$(document).bind('keydown', 'shift+n', newEmail);
+
 	};
 
 	assignIdsToEmails();
