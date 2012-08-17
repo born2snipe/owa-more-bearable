@@ -14,8 +14,12 @@
         "javascripts/jquery.js",
         "javascripts/jquery.hotkeys.js",
         "javascripts/bearable.js"
-      ]
+      ],
+      "css": ["css/style.css"]
     }
-  ]
+  ],
+  "background": {
+    "scripts": ["javascripts/background.js"]
+  }
 }
 

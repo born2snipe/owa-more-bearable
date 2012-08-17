@@ -56,7 +56,23 @@
 
 	checkMessages = function() {
 		$("#lnkHdrcheckmessages").click();
-	}
+	};
+
+	showHelp = function() {
+        var helpDiv = $("#__help__");
+
+        if (helpDiv.length === 0) {
+       		chrome.extension.sendMessage({}, function(response) {
+  				helpDiv = $(response.help).appendTo($("body"));
+			}); 	
+        }
+        helpDiv[0].scrollIntoView();
+        helpDiv.show();
+     };
+
+     hideHelp = function() {
+     	$("#__help__").hide();
+     };
 
 	bindKeys = function() {
 		$(document).bind('keydown', 'j', moveDownRow);
@@ -64,6 +80,8 @@
 		$(document).bind('keydown', 'm', clickMove);
 		$(document).bind('keydown', 'd', clickDelete);
 		$(document).bind('keydown', 'r', checkMessages);
+		$(document).bind('keydown', 'shift+/', showHelp);
+		$(document).bind('keydown', 'esc', hideHelp);
 	};
 
 	assignIdsToEmails();

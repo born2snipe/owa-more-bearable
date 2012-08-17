@@ -1,0 +1,32 @@
+
+#__help__ {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  font-family: "Monospace";
+  font-size: 2.1em;
+}
+
+#__help__ .inner {
+  color: white;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  display: table;
+  margin: 40px auto;
+  border-radius: 5px;
+}
+
+#__help__ ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#__help__ ul li span {
+  display: inline-block;
+  text-align: right;
+  color: yellow;
+  width: 65px;
+  padding-right: 7px;
+}
+
