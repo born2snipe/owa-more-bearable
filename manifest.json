@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "More Bearable Micro$oft Web Mail",
+  "version": "1.0",
+  "description": "Some hotkey support to webmail",
+  "permissions": [
+    "https://mymail.studentloan.org/"
+  ],
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "matches": ["https://mymail.studentloan.org/*"],
+      "js": [
+        "javascripts/jquery.js",
+        "javascripts/jquery.hotkeys.js",
+        "javascripts/bearable.js"
+      ]
+    }
+  ]
+}
+
