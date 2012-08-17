@@ -1,6 +1,7 @@
 
 #__help__ {
-  position: absolute;
+  position: fixed;                            
+  z-index: 999999;         
   top: 0;
   width: 100%;
   font-family: "Monospace";
@@ -30,3 +31,19 @@
   padding-right: 7px;
 }
 
+#__help_notifiction__ {
+  position: relative;
+}
+
+#__help_notifiction__ .inner {
+  position: fixed;                            
+  z-index: 999999;                            
+  bottom: 0;
+  left: 0;                              
+  background: rgba(0, 0, 0, .85);             
+  padding: 5px;                           
+  font-family: Helvetica, Arial, sans-serif;  
+  color: #bada55;                             
+  font-size: 20px;
+  border-radius: 0 5px 0 0;                       
+}

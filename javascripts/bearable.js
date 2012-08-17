@@ -102,7 +102,11 @@
 
      closeEmail = function() {
      	$("#lnkHdrclose").click();
-     }
+     };
+
+     informUserOfHelp = function() {
+		$("<div id='__help_notifiction__'><div class='inner'>Press '?' to see help</div></div>").appendTo($("body"));
+     };
 
 	bindKeys = function() {
 		$(document).bind('keydown', 'shift+h', firstPage);
@@ -124,5 +128,6 @@
 
 	assignIdsToEmails();
 	hightlightTheFirstRow();
+	informUserOfHelp();
 	bindKeys();
 })();
