@@ -20,6 +20,7 @@
 		var row = $("#__email_id__"+index);
 		row.addClass("sl");
 		row[0].scrollIntoView();
+		row.find('input').focus();
 		currentRowHighlighted = index;
 	};
 
