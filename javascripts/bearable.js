@@ -23,8 +23,10 @@
 	hightlightRow = function(index) {
 		var row = $("#"+generateEmailId(index));
 		row.addClass("sl");
-		row[0].scrollIntoView();
-		row.find('input').focus();
+		row.find('input').focus();				
+		if (row[0] != null) {
+			row[0].scrollIntoView();
+		}
 		currentRowHighlighted = index;
 	};
 
@@ -94,6 +96,14 @@
      	$("#lnkHdrnewmsg").click();
      };
 
+     openEmail = function() {
+     	$("#"+generateEmailId(currentRowHighlighted)).find("a")[0].click();
+     };
+
+     closeEmail = function() {
+     	$("#lnkHdrclose").click();
+     }
+
 	bindKeys = function() {
 		$(document).bind('keydown', 'shift+h', firstPage);
 		$(document).bind('keydown', 'h', previousPage);
@@ -107,6 +117,8 @@
 		$(document).bind('keydown', 'shift+/', showHelp);
 		$(document).bind('keydown', 'esc', hideHelp);
 		$(document).bind('keydown', 'shift+n', newEmail);
+		$(document).bind('keydown', 'o', openEmail);
+		$(document).bind('keydown', 'c', closeEmail);
 
 	};
 
