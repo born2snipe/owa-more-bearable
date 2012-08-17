@@ -74,9 +74,29 @@
      	$("#__help__").hide();
      };
 
+     previousPage = function() {
+     	$("#lnkPrvPg").click();
+     };
+
+     nextPage = function() {
+     	$("#lnkNxtPg").click();
+     };
+
+	lastPage = function() {
+     	$("#lnkLstPg").click();
+     };
+
+	firstPage = function() {
+     	$("#lnkFrstPg").click();
+     };
+
 	bindKeys = function() {
+		$(document).bind('keydown', 'shift+h', firstPage);
+		$(document).bind('keydown', 'h', previousPage);
 		$(document).bind('keydown', 'j', moveDownRow);
 		$(document).bind('keydown', 'k', moveUpRow);
+		$(document).bind('keydown', 'l', nextPage);
+		$(document).bind('keydown', 'shift+l', lastPage);
 		$(document).bind('keydown', 'm', clickMove);
 		$(document).bind('keydown', 'd', clickDelete);
 		$(document).bind('keydown', 'r', checkMessages);
