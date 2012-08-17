@@ -9,7 +9,9 @@ chrome.extension.onMessage.addListener(function(request, sender, sendResponse) {
 		          "<li><span>H:</span>First page of emails</li>"+
 		          "<li><span>h:</span>Previous page of emails</li>"+
 		          "<li><span>j:</span>Move down an email</li>"+
+		          "<li><span>J:</span>Select and move down an email</li>"+
 		          "<li><span>k:</span>Move up an email</li>"+
+		          "<li><span>K:</span>Select and move up an email</li>"+
 		          "<li><span>l:</span>Next page of emails</li>"+
 		          "<li><span>L:</span>Last page of emails</li>"+
 		          "<hr>"+

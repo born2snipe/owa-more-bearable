@@ -41,6 +41,22 @@
 		}
 	};
 
+	selectAndMoveDownRow = function() {
+		toggleRow(currentRowHighlighted);
+		moveDownRow();
+	};
+
+	selectAndMoveUpRow = function() {
+		toggleRow(currentRowHighlighted);
+		moveUpRow();
+	};
+
+	toggleRow = function(index) {
+		var row = $("#"+generateEmailId(index));
+		var checkbox = row.find('input');
+		checkbox.prop("checked", !checkbox.prop("checked"));
+	};
+
 	moveUpRow = function() {
 		if (currentRowHighlighted > firstRowIndex) {
 			unhightlightRow(currentRowHighlighted);
@@ -119,11 +135,13 @@
 	forwardEmail = function() {
      	$("#lnkHdrforward").click();
      };
-     
+
 	bindKeys = function() {
 		$(document).bind('keydown', 'shift+h', firstPage);
 		$(document).bind('keydown', 'h', previousPage);
+		$(document).bind('keydown', 'shift+j', selectAndMoveDownRow);
 		$(document).bind('keydown', 'j', moveDownRow);
+		$(document).bind('keydown', 'shift+k', selectAndMoveUpRow);
 		$(document).bind('keydown', 'k', moveUpRow);
 		$(document).bind('keydown', 'l', nextPage);
 		$(document).bind('keydown', 'shift+l', lastPage);
