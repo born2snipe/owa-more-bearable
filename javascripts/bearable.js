@@ -161,7 +161,7 @@
      };
 
      isViewingAnEmail = function() {
-     	return $("a:contains('Close')").length != 0;
+     	return $("a:contains('Reply')").length != 0;
      }
 
      clickNextItem = function() {
@@ -170,6 +170,28 @@
 
      clickPreviousItem = function() {
      	$("#lnkHdrprevious").click();
+     };
+
+     isMoveEmailScreen = function() {
+     	return $("#btnmv").length != 0;
+     };
+
+     confirmMoveEmails = function() {
+     	$("#btnmv").click();
+     };
+
+     selectNextMoveFolder = function() {
+     	var idOfSelected = $('input[type=radio]:checked').attr("id");
+     	var tuple = idOfSelected.replace(/(.+)([0-9]+)/,'$1,$2').split(",");
+     	var nextRadioButtonId = tuple[0] + (parseInt(tuple[1])+1);
+     	var nextRadioButton = $("#"+nextRadioButtonId);
+     	if (nextRadioButton.length != 0) {
+     		nextRadioButton.click();
+     	}
+     };
+
+     selectPreviousMoveFolder = function() {
+
      };
 
 	bindKeys = function() {
@@ -210,6 +232,15 @@
 			registerHotKey('k', clickPreviousItem, 'Previous email');
 		}
 
+		if (isMoveEmailScreen()) {
+			helpTitle += "Moving Email";
+
+			$("#rdomru1").click();
+
+			registerHotKey('j', selectNextMoveFolder, 'Move down selection');
+			registerHotKey('k', selectPreviousMoveFolder, 'Move up selection');
+			registerHotKey('return', confirmMoveEmails, 'Confirm moving emails');
+		}
 	};
 
 	assignIdsToEmails();
