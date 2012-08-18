@@ -17,6 +17,13 @@
   border-radius: 5px;
 }
 
+#__help__ .title {
+  font-weight: bold;
+  color: red;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
 #__help__ ul {
   list-style: none;
   padding: 0;

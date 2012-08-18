@@ -3,6 +3,7 @@
 	var totalNumberOfRows = 0;
 	var currentRowHighlighted = 0;
 	var hotkeys = new Array();
+	var helpTitle = "";
 
 	registerHotKey = function(keystroke, functionToInvoke, description) {
 		$(document).bind('keydown', keystroke, functionToInvoke);
@@ -97,6 +98,7 @@
 
 			$("<div id='__help__'>"+
 				"<div class='inner'>"+
+				"<div class='title'>"+helpTitle+"</div>"+
 			    "<ul>"+
 				hotkeyHtml +		         
 			     "</ul>"+
@@ -154,26 +156,50 @@
      	$("#lnkHdrforward").click();
      };
 
+     isEmailListPage = function() {
+     	return $("a:contains('New Message')").length != 0;
+     };
+
+     isViewingAnEmail = function() {
+     	return $("a:contains('Close')").length != 0;
+     }
+
 	bindKeys = function() {
-		registerHotKey('shift+h', firstPage, 'Go to first page of emails');
-		registerHotKey('h', previousPage, 'Go to previous page of emails');
-		registerHotKey('shift+j', selectAndMoveDownRow, 'Select email and move down an email');
-		registerHotKey('j', moveDownRow, 'Move down an email');
-		registerHotKey('shift+k', selectAndMoveUpRow, 'Select email and move up an email');
-		registerHotKey('k', moveUpRow, 'Move up an email');
-		registerHotKey('l', nextPage, 'Go to next page of emails');
-		registerHotKey('shift+l', lastPage, 'Go to last page of emails');
-		registerHotKey('m', clickMove, 'Move selected email(s)');
-		registerHotKey('d', clickDelete, 'Delete selected email(s)');
-		registerHotKey('alt+r', checkMessages, 'Check for new email messages');
+		helpTitle = "Help: ";
+		hotkeys = new Array();
+
 		registerHotKey('shift+/', showHelp, 'Show help');
 		registerHotKey('esc', hideHelp, 'Hide help');
-		registerHotKey('shift+n', newEmail, 'Start a new email message');
-		registerHotKey('o', openEmail, 'Open current email');
-		registerHotKey('c', closeEmail, 'Close opened email');
-		registerHotKey('r', replyToEmail, 'Reply to sender of email');
-		registerHotKey('shift+r', replyAllToEmail, 'Reply to All recipients of email');
-		registerHotKey('f', forwardEmail, 'Forward email to others');
+
+		if (isEmailListPage()) {
+			helpTitle += "Email list";
+
+			registerHotKey('shift+h', firstPage, 'Go to first page of emails');
+			registerHotKey('h', previousPage, 'Go to previous page of emails');
+			registerHotKey('shift+j', selectAndMoveDownRow, 'Select email and move down an email');
+			registerHotKey('j', moveDownRow, 'Move down an email');
+			registerHotKey('shift+k', selectAndMoveUpRow, 'Select email and move up an email');
+			registerHotKey('k', moveUpRow, 'Move up an email');
+			registerHotKey('l', nextPage, 'Go to next page of emails');
+			registerHotKey('shift+l', lastPage, 'Go to last page of emails');
+			registerHotKey('m', clickMove, 'Move selected email(s)');
+			registerHotKey('d', clickDelete, 'Delete selected email(s)');
+			registerHotKey('alt+r', checkMessages, 'Check for new email messages');
+			registerHotKey('shift+n', newEmail, 'Start a new email message');
+			registerHotKey('o', openEmail, 'Open current email');	
+		}
+		
+		if (isViewingAnEmail()) {
+			helpTitle += "Viewing Email";
+
+			registerHotKey('c', closeEmail, 'Close opened email');
+			registerHotKey('r', replyToEmail, 'Reply to sender of email');
+			registerHotKey('shift+r', replyAllToEmail, 'Reply to All recipients of email');
+			registerHotKey('f', forwardEmail, 'Forward email to others');
+			registerHotKey('m', clickMove, 'Move email');
+			registerHotKey('d', clickDelete, 'Delete email');
+		}
+
 	};
 
 	assignIdsToEmails();
