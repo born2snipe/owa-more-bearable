@@ -17,9 +17,6 @@
       ],
       "css": ["css/style.css"]
     }
-  ],
-  "background": {
-    "scripts": ["javascripts/background.js"]
-  }
+  ]
 }
 

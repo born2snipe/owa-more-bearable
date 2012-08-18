@@ -2,6 +2,12 @@
 	var firstRowIndex = 3;
 	var totalNumberOfRows = 0;
 	var currentRowHighlighted = 0;
+	var hotkeys = new Array();
+
+	registerHotKey = function(keystroke, functionToInvoke, description) {
+		$(document).bind('keydown', keystroke, functionToInvoke);
+		hotkeys[keystroke] = description;
+	};
 
 	generateEmailId = function(index) {
 		return "__email_id__"+index;
@@ -80,9 +86,21 @@
         var helpDiv = $("#__help__");
 
         if (helpDiv.length === 0) {
-       		chrome.extension.sendMessage({}, function(response) {
-  				helpDiv = $(response.help).appendTo($("body"));
-			}); 	
+        	var hotkeyHtml = "";
+
+			for (var keystroke in hotkeys) {
+				hotkeyHtml += "<li>";
+				hotkeyHtml += "<span>"+keystroke+":</span>";
+				hotkeyHtml += hotkeys[keystroke];
+				hotkeyHtml += "</li>";
+			}
+
+			$("<div id='__help__'>"+
+				"<div class='inner'>"+
+			    "<ul>"+
+				hotkeyHtml +		         
+			     "</ul>"+
+	     	"</div></div>").appendTo($("body"));
         }
         helpDiv[0].scrollIntoView();
         helpDiv.show();
@@ -137,25 +155,25 @@
      };
 
 	bindKeys = function() {
-		$(document).bind('keydown', 'shift+h', firstPage);
-		$(document).bind('keydown', 'h', previousPage);
-		$(document).bind('keydown', 'shift+j', selectAndMoveDownRow);
-		$(document).bind('keydown', 'j', moveDownRow);
-		$(document).bind('keydown', 'shift+k', selectAndMoveUpRow);
-		$(document).bind('keydown', 'k', moveUpRow);
-		$(document).bind('keydown', 'l', nextPage);
-		$(document).bind('keydown', 'shift+l', lastPage);
-		$(document).bind('keydown', 'm', clickMove);
-		$(document).bind('keydown', 'd', clickDelete);
-		$(document).bind('keydown', 'alt+r', checkMessages);
-		$(document).bind('keydown', 'shift+/', showHelp);
-		$(document).bind('keydown', 'esc', hideHelp);
-		$(document).bind('keydown', 'shift+n', newEmail);
-		$(document).bind('keydown', 'o', openEmail);
-		$(document).bind('keydown', 'c', closeEmail);
-		$(document).bind('keydown', 'r', replyToEmail);
-		$(document).bind('keydown', 'shift+r', replyAllToEmail);
-		$(document).bind('keydown', 'f', forwardEmail);
+		registerHotKey('shift+h', firstPage, 'Go to first page of emails');
+		registerHotKey('h', previousPage, 'Go to previous page of emails');
+		registerHotKey('shift+j', selectAndMoveDownRow, 'Select email and move down an email');
+		registerHotKey('j', moveDownRow, 'Move down an email');
+		registerHotKey('shift+k', selectAndMoveUpRow, 'Select email and move up an email');
+		registerHotKey('k', moveUpRow, 'Move up an email');
+		registerHotKey('l', nextPage, 'Go to next page of emails');
+		registerHotKey('shift+l', lastPage, 'Go to last page of emails');
+		registerHotKey('m', clickMove, 'Move selected email(s)');
+		registerHotKey('d', clickDelete, 'Delete selected email(s)');
+		registerHotKey('alt+r', checkMessages, 'Check for new email messages');
+		registerHotKey('shift+/', showHelp, 'Show help');
+		registerHotKey('esc', hideHelp, 'Hide help');
+		registerHotKey('shift+n', newEmail, 'Start a new email message');
+		registerHotKey('o', openEmail, 'Open current email');
+		registerHotKey('c', closeEmail, 'Close opened email');
+		registerHotKey('r', replyToEmail, 'Reply to sender of email');
+		registerHotKey('shift+r', replyAllToEmail, 'Reply to All recipients of email');
+		registerHotKey('f', forwardEmail, 'Forward email to others');
 	};
 
 	assignIdsToEmails();
