@@ -164,6 +164,14 @@
      	return $("a:contains('Close')").length != 0;
      }
 
+     clickNextItem = function() {
+     	$("#lnkHdrnext").click();
+     };
+
+     clickPreviousItem = function() {
+     	$("#lnkHdrprevious").click();
+     };
+
 	bindKeys = function() {
 		helpTitle = "Help: ";
 		hotkeys = new Array();
@@ -198,6 +206,8 @@
 			registerHotKey('f', forwardEmail, 'Forward email to others');
 			registerHotKey('m', clickMove, 'Move email');
 			registerHotKey('d', clickDelete, 'Delete email');
+			registerHotKey('j', clickNextItem, 'Next email');
+			registerHotKey('k', clickPreviousItem, 'Previous email');
 		}
 
 	};
