@@ -161,7 +161,7 @@
      };
 
      isViewingAnEmail = function() {
-     	return $("a:contains('Close')").length != 0;
+     	return $("a:contains('Reply')").length != 0;
      }
 
      clickNextItem = function() {
